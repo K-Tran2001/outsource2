@@ -5,7 +5,7 @@ import Link from "next/link";
 import Image from "next/image";
 
 export default function MasterTopBar() {
-  const [selectedLanguage,setSelectedlanguage] = React.useState({code:"vi",name:"Vietnamese",flag:"	https://upload.wikimedia.org/wikipedia/commons/2/21/Flag_of_Vietnam.svg"})//JSON.parse(localStorage.getItem("lang"))||
+  const [selectedLanguage,setSelectedlanguage] = React.useState({})//JSON.parse(localStorage.getItem("lang"))||
   const [languages ,setLanguages] = React.useState([])
   const [expand,setExpand] = React.useState(false)
   const changeLanguage =(newLang)=>{
