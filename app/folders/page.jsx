@@ -149,6 +149,7 @@ export default function Folders() {
   }
   React.useEffect(()=>{
     fetchData();
+    console.log("load data");
   },[])
   // React.useEffect(()=>{
   //   setCurrentURL(window?.location.href)

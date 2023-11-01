@@ -10,7 +10,7 @@ export default function MasterTopBar() {
   const [expand,setExpand] = React.useState(false)
   const changeLanguage =(newLang)=>{
     document.documentElement.lang = newLang.code; 
-    //window.location.href =`/${newLang.code}/folders`
+    window.location.href =`/folders`
     //localStorage.setItem("lang",JSON.stringify(newLang))
     localStorage.setItem("prefered_local",newLang.code)
   }
@@ -66,7 +66,7 @@ export default function MasterTopBar() {
                   {
                     languages?.map((lang)=>(
                         <li key={Math.random()} className="px-4">
-                            <Link href={`/${lang.code}/folders`}  onClick={()=>{changeLanguage(lang);setSelectedlanguage(lang)}}>
+                            <Link href={`/folders`}  onClick={()=>{changeLanguage(lang);setSelectedlanguage(lang)}}>
                                 <div className="inline-flex items-center">
                                 <Image src={lang.flag} width={300} height={300}  className="w-4 h-4 mr-2" alt="Vietnam free icon"/>              
                                     {lang.name}
