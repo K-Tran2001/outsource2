@@ -5,13 +5,12 @@ import Link from "next/link";
 import Image from "next/image";
 
 export default function MasterTopBar() {
-  const [selectedLanguage,setSelectedlanguage] = React.useState({})
+  const [selectedLanguage,setSelectedlanguage] = React.useState(undefined)
   const [languages ,setLanguages] = React.useState([])
   const [expand,setExpand] = React.useState(false)
   const changeLanguage =(newLang)=>{
     document.documentElement.lang = newLang.code; 
     window.location.href =`/folders`
-    //localStorage.setItem("lang",JSON.stringify(newLang))
     localStorage.setItem("prefered_local",newLang.code)
   }
   const getAlllanguage = ()=>{
@@ -27,26 +26,25 @@ export default function MasterTopBar() {
         flag: flagUrl,
     };
     });
-    //setLanguages(languages)
     setLanguages(languages.filter((item)=>item.flag!=""))
   }
   const getLanguageByCode = (code)=>{
-    const language = langs.all().find(lang=>lang["1"]==code) 
-    const languageCode = language["1"];
-    const languageName = language.name;
-    const countryCode = language["1"].toLowerCase();
-    const flagUrl = countryFlags?.findFlagUrlByNationality(languageName);
-    const currentLang = {
-        code: languageCode,
-        name: languageName,
-        flag: flagUrl,
+    const language =langs.all().find(lang=>lang["1"]==code)
+    if(language!=undefined){
+      const languageCode = language["1"];
+      const languageName = language.name;
+      const countryCode = language["1"].toLowerCase();
+      const flagUrl = countryFlags?.findFlagUrlByNationality(languageName);
+      const currentLang = {
+          code: languageCode,
+          name: languageName,
+          flag: flagUrl,
+      }
+      setSelectedlanguage(currentLang)
+      localStorage.setItem("prefered_local",currentLang.code)
     }
-    setSelectedlanguage(currentLang)
-    //localStorage.setItem("lang",JSON.stringify(currentLang))
-    localStorage.setItem("prefered_local",currentLang.code)
   }
   React.useEffect(()=>{
-    //setSelectedlanguage(JSON.parse(localStorage.getItem("lang")))
     getAlllanguage()
     getLanguageByCode(localStorage.getItem("prefered_local")||"vi")
   },[])
@@ -57,7 +55,7 @@ export default function MasterTopBar() {
         <div className=" relative">
 
           <div id="states-button"  className="flex-shrink-0 z-10 inline-flex items-center py-2.5 px-4 text-sm font-medium text-center text-gray-500 bg-gray-100 border border-gray-300 rounded-lg hover:bg-gray-200 focus:ring-4 focus:outline-none focus:ring-gray-100 dark:bg-gray-700 dark:hover:bg-gray-600 dark:focus:ring-gray-700 dark:text-white dark:border-gray-600" onClick={()=>setExpand(!expand)}>
-              <Image src={selectedLanguage.flag} width={300} height={300}  className="w-4 h-4 mr-2" alt="Vietnam free icon"/>
+              <Image src={selectedLanguage?.flag} width={300} height={300}  className="w-4 h-4 mr-2" alt="Vietnam free icon"/>
               {selectedLanguage?.name}
           </div>
           {expand&&<div className="absolute mt-1">
