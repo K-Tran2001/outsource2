@@ -5,7 +5,7 @@ import Link from "next/link";
 import Image from "next/image";
 
 export default function MasterTopBar() {
-  const [selectedLanguage,setSelectedlanguage] = React.useState({})//JSON.parse(localStorage.getItem("lang"))||
+  const [selectedLanguage,setSelectedlanguage] = React.useState({})
   const [languages ,setLanguages] = React.useState([])
   const [expand,setExpand] = React.useState(false)
   const changeLanguage =(newLang)=>{

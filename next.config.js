@@ -15,13 +15,6 @@ const nextConfig = {
 
 module.exports = nextConfig;
 
-// const withNextIntl = require("next-intl/plugin")(
-//   // This is the default (also the `src` folder is supported out of the box)
-//   "./i18n.js"
-// );
-
-// module.exports = withNextIntl(nextConfig);
-
 module.exports = {
   env: {
     "API_TRANSLATE_URL":"https://script.google.com/macros/s/AKfycbycuzr2XbisDtn5mzPFaZghtOnChQE8O7vJyUNVPJt6tgv7w2UQGVeLpGWj7enQ6sJa/exec",

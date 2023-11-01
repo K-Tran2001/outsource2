@@ -60,7 +60,6 @@ export default function Folders() {
   const [currentURL, setCurrentURL] = React.useState();
   const [visible,setVisible] = React.useState(false)
   const [visibleModalNewField,setVisibleModalNewField] = React.useState(false)
-  const [lang,setLang] = React.useState({});
   const [dataTranslate,setDataTranslate]= React.useState({})
   const [isLoading,setIsLoading]=React.useState(false);
   async function getDataTranslate() {
@@ -151,12 +150,11 @@ export default function Folders() {
   React.useEffect(()=>{
     fetchData();
   },[])
-  React.useEffect(()=>{
-    setCurrentURL(window?.location.href)
-  },[currentURL])
+  // React.useEffect(()=>{
+  //   setCurrentURL(window?.location.href)
+  // },[currentURL])
   return (
     <div className="border-red-500 border rounded-md border-solid"> 
-    {/* {JSON.stringify(pageTranslate)} */}
       <svg className="inset-0 h-full w-full stroke-[#1118271a]" fill="none" onClick={()=>setVisible(true)}>
         <defs>
           <pattern
