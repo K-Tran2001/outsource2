@@ -14,7 +14,7 @@ export default function Form() {
 
     const request = {
         "source_lang": "en",
-        "target_lang":JSON.parse(localStorage.getItem('lang'))?.code||"vi",
+        "target_lang":JSON.parse(localStorage.getItem('prefered_local'))?.code||"vi",
         "click_to_upload":"Click to upload",
         "or_drag_and_drop":"or drag and drop",
         "take_a_photo":"Take A Photo",
