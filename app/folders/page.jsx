@@ -67,7 +67,7 @@ export default function Folders() {
     setIsLoading(true)
     const request = {
         "source_lang": "en",
-        "target_lang":localStorage.getItem('prefered_local')||"vi",
+        "target_lang":localStorage.getItem('prefered_local')||"en",
         "back": "Back",
         "new_survey":"New Survey",
         "open_form":"Open Form",
@@ -132,7 +132,7 @@ export default function Folders() {
   async function getDataTranslate_More(translateMore) {
     const request = {
         "source_lang": "en",
-        "target_lang":localStorage.getItem('prefered_local')||"vi",
+        "target_lang":localStorage.getItem('prefered_local')||"en",
         ...translateMore,
     };
     const formDatab = new FormData();

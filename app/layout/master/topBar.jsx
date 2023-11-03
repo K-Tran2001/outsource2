@@ -19,14 +19,16 @@ export default function MasterTopBar() {
     const languageName = language.name;
     const countryCode = language["1"].toLowerCase();
     const flagUrl = countryFlags?.findFlagUrlByNationality(languageName);
-    
     return {
         code: languageCode,
         name: languageName,
         flag: flagUrl,
     };
     });
-    setLanguages(languages.filter((item)=>item.flag!=""))
+    setLanguages([
+      {code:"en",name:"English",flag:"https://www.shutterstock.com/image-vector/flag-united-kingdom-vector-260nw-1706586214.jpg"},
+      ...languages.filter((item)=>item.flag!="")]
+      .sort((a, b) => a.name.localeCompare(b.name)));
   }
   const getLanguageByCode = (code)=>{
     const language =langs.all().find(lang=>lang["1"]==code)
@@ -40,22 +42,23 @@ export default function MasterTopBar() {
           name: languageName,
           flag: flagUrl,
       }
-      setSelectedlanguage(currentLang)
+      setSelectedlanguage(code==="en"?
+      {code:"en",name:"English",flag:"https://www.shutterstock.com/image-vector/flag-united-kingdom-vector-260nw-1706586214.jpg"}
+      :currentLang)
       localStorage.setItem("prefered_local",currentLang.code)
     }
   }
   React.useEffect(()=>{
     getAlllanguage()
-    getLanguageByCode(localStorage.getItem("prefered_local")||"vi")
+    getLanguageByCode(localStorage.getItem("prefered_local")||"en")
   },[])
 
   return (
     <div className="sticky top-0 flex h-16 shrink-0 items-center gap-x-4 border-gray-200 bg-gray-500 ">
         <div className="flex"></div>
         <div className=" relative">
-
           <div id="states-button"  className="flex-shrink-0 z-10 inline-flex items-center py-2.5 px-4 text-sm font-medium text-center text-gray-500 bg-gray-100 border border-gray-300 rounded-lg hover:bg-gray-200 focus:ring-4 focus:outline-none focus:ring-gray-100 dark:bg-gray-700 dark:hover:bg-gray-600 dark:focus:ring-gray-700 dark:text-white dark:border-gray-600" onClick={()=>setExpand(!expand)}>
-              <Image src={selectedLanguage?.flag} width={300} height={300}  className="w-4 h-4 mr-2" alt="Vietnam free icon"/>
+              <img src={selectedLanguage?.flag}  className="w-4 h-4 mr-2" alt="Vietnam free icon"/>
               {selectedLanguage?.name}
           </div>
           {expand&&<div className="absolute mt-1">
@@ -66,7 +69,7 @@ export default function MasterTopBar() {
                         <li key={Math.random()} className="px-4">
                             <Link href={`/folders`}  onClick={()=>{changeLanguage(lang);setSelectedlanguage(lang)}}>
                                 <div className="inline-flex items-center">
-                                <Image src={lang.flag} width={300} height={300}  className="w-4 h-4 mr-2" alt="Vietnam free icon"/>              
+                                <img src={lang.flag}  className="w-4 h-4 mr-2" alt="Vietnam free icon"/>              
                                     {lang.name}
                                 </div>
                             </Link>
