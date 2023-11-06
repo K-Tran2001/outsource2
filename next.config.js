@@ -17,9 +17,7 @@ module.exports = nextConfig;
 
 module.exports = {
   env: {
-    "API_TRANSLATE_URL":"https://script.google.com/macros/s/AKfycbycuzr2XbisDtn5mzPFaZghtOnChQE8O7vJyUNVPJt6tgv7w2UQGVeLpGWj7enQ6sJa/exec",
-    "API_TRANSLATE_URL_2":"https://script.google.com/macros/s/AKfycbyMNkppv_rahHpQFvW1AIwahx0MfW3m2abBlYmiImKGmMUbRjtf76h7KiAEpP1T2utFpA/exec",
-    "API_TRANSLATE_URL_3":"https://script.google.com/macros/s/AKfycbx6Ht55wrFkzzN4W6jZ2elj73Wr2qBVre7P7iN45g3LBdz8VdM6J3UKKc-Hw8omG5Np/exec",
-    "API_TRANSLATE_URL_4":"https://script.google.com/macros/s/AKfycbybWf76PT7300gs1ERJ6n5_Uy2hIBUfl6hNC7GoHjLdftGzRjbZSTvlOW01zFvb8I4/exec"
+    "API_TRANSLATE_URL_4":"https://script.google.com/macros/s/AKfycbybWf76PT7300gs1ERJ6n5_Uy2hIBUfl6hNC7GoHjLdftGzRjbZSTvlOW01zFvb8I4/exec",
+	"API_TRANSLATE_URL_5":"https://script.google.com/macros/s/AKfycbzEz6oXfIilm0F9SiUfOLrtApG13F8UYYzKvudDpIVdVkhCDBPf_WaBXwwGLMFyY79j/exec"
   }
 }

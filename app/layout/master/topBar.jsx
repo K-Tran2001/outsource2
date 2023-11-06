@@ -2,7 +2,6 @@ import React from "react";
 import langs from 'langs'
 import * as countryFlags from 'country-flags-svg'
 import Link from "next/link";
-import Image from "next/image";
 
 export default function MasterTopBar() {
   const [selectedLanguage,setSelectedlanguage] = React.useState(undefined)
@@ -22,13 +21,11 @@ export default function MasterTopBar() {
     return {
         code: languageCode,
         name: languageName,
-        flag: flagUrl,
+        flag: languageCode=="en"?"https://www.shutterstock.com/image-vector/flag-united-kingdom-vector-260nw-1706586214.jpg":flagUrl,
+        //flag: `https://unpkg.com/language-icons@0.3.0/icons/${languageCode}.svg`,
     };
     });
-    setLanguages([
-      {code:"en",name:"English",flag:"https://www.shutterstock.com/image-vector/flag-united-kingdom-vector-260nw-1706586214.jpg"},
-      ...languages.filter((item)=>item.flag!="")]
-      .sort((a, b) => a.name.localeCompare(b.name)));
+    setLanguages(languages.filter(lang=>lang.flag!=""));
   }
   const getLanguageByCode = (code)=>{
     const language =langs.all().find(lang=>lang["1"]==code)
@@ -40,11 +37,10 @@ export default function MasterTopBar() {
       const currentLang = {
           code: languageCode,
           name: languageName,
-          flag: flagUrl,
+          flag: languageCode=="en"?"https://www.shutterstock.com/image-vector/flag-united-kingdom-vector-260nw-1706586214.jpg":flagUrl,
+          //flag: `https://unpkg.com/language-icons@0.3.0/icons/${code}.svg`,
       }
-      setSelectedlanguage(code==="en"?
-      {code:"en",name:"English",flag:"https://www.shutterstock.com/image-vector/flag-united-kingdom-vector-260nw-1706586214.jpg"}
-      :currentLang)
+      setSelectedlanguage(currentLang)
       localStorage.setItem("prefered_local",currentLang.code)
     }
   }
